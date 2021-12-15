@@ -2,7 +2,9 @@
   <div>
     <div id="navbar">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="container navbar-brand" href="#"><strong>Moviesku</strong></a>
+        <a class="container navbar-brand" href="#"
+          ><strong>I-Football</strong></a
+        >
         <button
           class="navbar-toggler"
           type="button"
