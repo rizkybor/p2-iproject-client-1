@@ -21,6 +21,9 @@
 import BookmarkInner from "../components/BookmarkInner.vue";
 export default {
   name: "Bookmark",
+  components: {
+    BookmarkInner,
+  },
 };
 </script>
 
