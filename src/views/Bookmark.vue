@@ -4,10 +4,11 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">No</th>
+          <th scope="col">Type Match</th>
+          <th scope="col">Match</th>
+          <th scope="col">Date/Time</th>
+          <th scope="col">Venue</th>
         </tr>
       </thead>
       <tbody>
