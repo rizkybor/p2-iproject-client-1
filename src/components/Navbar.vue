@@ -35,13 +35,22 @@
               <a class="nav-link" href="#" v-if="isLogin">Fixture</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" v-if="isLogin">Standingsp</a>
+              <a class="nav-link" href="#" v-if="isLogin">Standings</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" v-if="isLogin">League</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" v-if="isLogin">Bookmark</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#"
+                @click.prevent="toLogout"
+                v-if="isLogin"
+                ><strong>Logout</strong></a
+              >
             </li>
           </ul>
         </div>

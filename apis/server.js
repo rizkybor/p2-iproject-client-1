@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstances = axios.create({
-    baseURL: "https://challenge-movies-ku.herokuapp.com/"
+    baseURL: "http://localhost:3000"
 })
 
  export default axiosInstances

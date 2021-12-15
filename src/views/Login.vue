@@ -85,12 +85,19 @@
 <script>
 export default {
   name: "Login",
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
   methods: {
-    login() {
-      this.$store.dispatch("login", {
+    async login() {
+      await this.$store.dispatch("login", {
         email: this.email,
         password: this.password,
       });
+      this.$router.push("/");
     },
     toSignUp() {
       this.$router.push("/register");

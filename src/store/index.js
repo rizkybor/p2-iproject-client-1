@@ -1,5 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import Swal from "sweetalert2";
+import axiosInstances from "../../apis/server"
+
 
 Vue.use(Vuex);
 
@@ -15,17 +18,17 @@ export default new Vuex.Store({
   actions: {
     login: function({commit}, {email, password}){
       axiosInstances({
-        url: "/customer/login",
+        url: "/login",
         method: "post",
         data: {
           email,
           password
         }
       }).then(({data})=>{
-        router.push("/");
+        
         Swal.fire(
           'Login Success!',
-          'welcome to Moviesku'
+          'welcome to I-Football'
         )
         localStorage.setItem("token", data.token);
         commit("SET_IS_LOGIN", true)

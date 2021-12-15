@@ -3,9 +3,6 @@
     <Navbar />
     <div class="container">
       <Fixture />
-      <Standings v-if="isLogin" />
-      <League v-if="isLogin" />
-      <Bookmark v-if="isLogin" />
     </div>
     <Footer />
   </div>
@@ -15,9 +12,6 @@
 import Navbar from "../components/Navbar.vue";
 import Footer from "../components/Footer.vue";
 import Fixture from "../views/Fixture.vue";
-import Standings from "../views/Standings.vue";
-import League from "../views/League.vue";
-import Bookmark from "../views/Bookmark.vue";
 
 export default {
   name: "Home",
@@ -25,9 +19,6 @@ export default {
     Navbar,
     Footer,
     Fixture,
-    Standings,
-    League,
-    Bookmark,
   },
   computed: {
     isLogin: function () {
