@@ -4,10 +4,13 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">No</th>
+          <th scope="col">Team</th>
+          <th scope="col">Match</th>
+          <th scope="col">Win</th>
+          <th scope="col">Lose</th>
+          <th scope="col">Draw</th>
+          <th scope="col">Point</th>
         </tr>
       </thead>
       <tbody>
