@@ -1,20 +1,6 @@
 <template>
-  <div>
-    <h3>All Match</h3>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Action</th>
-          <th scope="col">Type Match</th>
-          <th scope="col">Match</th>
-          <th scope="col">Date/Time</th>
-          <th scope="col">Venue</th>
-        </tr>
-      </thead>
-      <tbody>
-        <FixtureInner />
-      </tbody>
-    </table>
+  <div class="Fixture">
+    <FixtureInner />
   </div>
 </template>
 
@@ -25,8 +11,13 @@ export default {
   components: {
     FixtureInner,
   },
+  computed: {
+    isLogin: function () {
+      return this.$store.state.isLogin;
+    },
+  },
 };
 </script>
 
-<style>
+<style scoped>
 </style>

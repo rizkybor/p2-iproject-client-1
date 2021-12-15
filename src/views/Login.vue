@@ -85,6 +85,20 @@
 <script>
 export default {
   name: "Login",
+  methods: {
+    login() {
+      this.$store.dispatch("login", {
+        email: this.email,
+        password: this.password,
+      });
+    },
+    toSignUp() {
+      this.$router.push("/register");
+    },
+    toHomeUnregister() {
+      this.$router.push("/");
+    },
+  },
 };
 </script>
 
