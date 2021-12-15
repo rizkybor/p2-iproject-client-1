@@ -3,7 +3,6 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
-import Fixture from "../views/Fixture.vue";
 import Standings from "../views/Standings.vue";
 import League from "../views/League.vue";
 import Bookmark from "../views/Bookmark.vue"
@@ -25,11 +24,6 @@ const routes = [
     path: "/register",
     name: "Register",
     component: Register,
-  },
-  {
-    path: "/fixture",
-    name: "Fixture",
-    component: Fixture,
   },
   {
     path: "/standings",

@@ -110,14 +110,15 @@ export default {
     };
   },
   methods: {
-    register() {
+    async register() {
       let payload = {
         username: this.username,
         email: this.email,
         password: this.password,
         role: this.role,
       };
-      this.$store.dispatch("register", payload);
+      await this.$store.dispatch("register", payload);
+      this.$router.push("/login");
     },
     toSignIn() {
       this.$router.push("/login");
