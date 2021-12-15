@@ -19,13 +19,25 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <a class="nav-link" href="#" v-if="!isLogin">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sign In</a>
+              <a class="nav-link" href="#" v-if="!isLogin">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sign Up</a>
+              <a class="nav-link" href="#" v-if="!isLogin">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" v-if="isLogin">Fixture</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" v-if="isLogin">Standingsp</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" v-if="isLogin">League</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" v-if="isLogin">Bookmark</a>
             </li>
           </ul>
         </div>
@@ -37,6 +49,11 @@
 <script>
 export default {
   name: "Navbar",
+  computed: {
+    isLogin: function () {
+      return this.$store.state.isLogin;
+    },
+  },
 };
 </script>
 
