@@ -5,6 +5,7 @@
       <Fixture />
       <Standings />
       <League />
+      <Bookmark />
     </div>
     <Login />
     <Register />
@@ -20,6 +21,7 @@ import Register from "../views/Register.vue";
 import Fixture from "../views/Fixture.vue";
 import Standings from "../views/Standings.vue";
 import League from "../views/League.vue";
+import Bookmark from "../views/Bookmark.vue";
 
 export default {
   name: "Home",
@@ -31,6 +33,7 @@ export default {
     Fixture,
     Standings,
     League,
+    Bookmark,
   },
 };
 </script>
