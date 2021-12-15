@@ -3,12 +3,7 @@
     <Navbar />
     <div class="container">
       <Fixture />
-      <Standings />
-      <League />
-      <Bookmark />
     </div>
-    <Login />
-    <Register />
     <Footer />
   </div>
 </template>
@@ -16,29 +11,25 @@
 <script>
 import Navbar from "../components/Navbar.vue";
 import Footer from "../components/Footer.vue";
-import Login from "../views/Login.vue";
-import Register from "../views/Register.vue";
 import Fixture from "../views/Fixture.vue";
-import Standings from "../views/Standings.vue";
-import League from "../views/League.vue";
-import Bookmark from "../views/Bookmark.vue";
 
 export default {
   name: "Home",
   components: {
     Navbar,
     Footer,
-    Login,
-    Register,
     Fixture,
-    Standings,
-    League,
-    Bookmark,
+  },
+  computed: {
+    isLogin: function () {
+      return this.$store.state.isLogin;
+    },
   },
   created: function () {
     if (localStorage.getItem("token")) {
       this.$store.commit("SET_IS_LOGIN", true);
     }
+    this.$store.dispatch("fetchFixture");
   },
 };
 </script>

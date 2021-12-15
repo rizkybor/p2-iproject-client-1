@@ -47,23 +47,14 @@
                     </div>
                     <div class="form-floating mb-3">
                       <input
-                        v-model="phoneNumber"
+                        disabled
                         type="text"
                         class="form-control"
                         id="floatingInput"
                         placeholder="input your phone number"
+                        value="author"
                       />
-                      <label for="floatingInput">Phone Number</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                      <input
-                        v-model="address"
-                        type="text"
-                        class="form-control"
-                        id="floatingInput"
-                        placeholder="input your address"
-                      />
-                      <label for="floatingInput">Address</label>
+                      <label for="floatingInput">Role</label>
                     </div>
                     <div class="d-grid">
                       <button
@@ -108,7 +99,34 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Register",
+  data() {
+    return {
+      username: "",
+      email: "",
+      password: "",
+      role: "author",
+    };
+  },
+  methods: {
+    register() {
+      let payload = {
+        username: this.username,
+        email: this.email,
+        password: this.password,
+        role: this.role,
+      };
+      this.$store.dispatch("register", payload);
+    },
+    toSignIn() {
+      this.$router.push("/login");
+    },
+    toHomeUnregister() {
+      this.$router.push("/");
+    },
+  },
+};
 </script>
 
 <style scoped>
