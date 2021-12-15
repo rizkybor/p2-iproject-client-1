@@ -1,6 +1,6 @@
 <template>
   <tr>
-    <th>Bookmark</th>
+    <th>1</th>
     <td>Champions League</td>
     <td>Paris vs Real Madrid</td>
     <td>27/03/2022, 02:30 wib</td>

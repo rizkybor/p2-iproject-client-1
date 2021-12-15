@@ -4,7 +4,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Action</th>
+          <th scope="col">No</th>
           <th scope="col">Type Match</th>
           <th scope="col">Match</th>
           <th scope="col">Date/Time</th>
