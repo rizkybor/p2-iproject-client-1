@@ -65,7 +65,7 @@ router.beforeEach((to, from, next) => {
   next();
   }
   
-  if (to.name == 'Favorites' && !localStorage.getItem("token")) {
+  if (to.name == 'Bookmark' && !localStorage.getItem("token")) {
   next({ name: 'Login' });
   } else {
   next();

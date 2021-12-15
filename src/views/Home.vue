@@ -35,5 +35,10 @@ export default {
     League,
     Bookmark,
   },
+  created: function () {
+    if (localStorage.getItem("token")) {
+      this.$store.commit("SET_IS_LOGIN", true);
+    }
+  },
 };
 </script>
