@@ -32,16 +32,40 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" v-if="isLogin">Fixture</a>
+              <a
+                class="nav-link"
+                href="#"
+                v-if="isLogin"
+                @click.prevent="toFixture('fixture')"
+                >Fixture</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" v-if="isLogin">Standings</a>
+              <a
+                class="nav-link"
+                href="#"
+                v-if="isLogin"
+                @click.prevent="toStandings('standings')"
+                >Standings</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" v-if="isLogin">League</a>
+              <a
+                class="nav-link"
+                href="#"
+                v-if="isLogin"
+                @click.prevent="toLeague('league')"
+                >League</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" v-if="isLogin">Bookmark</a>
+              <a
+                class="nav-link"
+                href="#"
+                v-if="isLogin"
+                @click.prevent="toBookmark('bookmark')"
+                >Bookmark</a
+              >
             </li>
             <li class="nav-item">
               <a
@@ -78,9 +102,17 @@ export default {
     toSignUp() {
       this.$router.push("/register");
     },
-    toFavorites() {
-      console.log("toFavorites");
-      this.$router.push("/favorites");
+    toFixture(payload) {
+      this.$store.commit("SET_IS_THISPAGE", payload);
+    },
+    toStandings(payload) {
+      this.$store.commit("SET_IS_THISPAGE", payload);
+    },
+    toLeague(payload) {
+      this.$store.commit("SET_IS_THISPAGE", payload);
+    },
+    toBookmark(payload) {
+      this.$store.commit("SET_IS_THISPAGE", payload);
     },
     toLogout() {
       this.$store.state.isLogin = false;
@@ -92,5 +124,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>
