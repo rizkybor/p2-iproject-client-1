@@ -19,7 +19,7 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#" v-if="!isLogin">Home</a>
+              <a class="nav-link" href="#" @click="toHome('/')">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" v-if="!isLogin" @click="toSignIn"
@@ -29,15 +29,6 @@
             <li class="nav-item">
               <a class="nav-link" href="#" v-if="!isLogin" @click="toSignUp"
                 >Register</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="#"
-                v-if="isLogin"
-                @click.prevent="toFixture('fixture')"
-                >Fixture</a
               >
             </li>
             <li class="nav-item">
@@ -93,7 +84,8 @@ export default {
     },
   },
   methods: {
-    toHome() {
+    async toHome(payload) {
+      await this.$store.commit("SET_IS_THISPAGE", payload);
       this.$router.push("/");
     },
     toSignIn() {
@@ -102,17 +94,20 @@ export default {
     toSignUp() {
       this.$router.push("/register");
     },
-    toFixture(payload) {
-      this.$store.commit("SET_IS_THISPAGE", payload);
+    async toStandings(payload) {
+      await this.$store.commit("SET_IS_THISPAGE", payload);
+
+      this.$router.push("/standings");
     },
-    toStandings(payload) {
-      this.$store.commit("SET_IS_THISPAGE", payload);
+    async toLeague(payload) {
+      await this.$store.commit("SET_IS_THISPAGE", payload);
+
+      this.$router.push("/league");
     },
-    toLeague(payload) {
-      this.$store.commit("SET_IS_THISPAGE", payload);
-    },
-    toBookmark(payload) {
-      this.$store.commit("SET_IS_THISPAGE", payload);
+    async toBookmark(payload) {
+      await this.$store.commit("SET_IS_THISPAGE", payload);
+
+      this.$router.push("/bookmark");
     },
     toLogout() {
       this.$store.state.isLogin = false;

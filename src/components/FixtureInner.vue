@@ -3,6 +3,7 @@
     <div class="container">
       <div class="s_bode">
         <a
+          @click.prevent="toBookmark('bookmark')"
           v-if="isLogin"
           href="#"
           class="bi-file-plus-fill"
@@ -40,9 +41,15 @@
 <script>
 export default {
   name: "FixtureInner",
+  props: ["data"],
   computed: {
     isLogin: function () {
       return this.$store.state.isLogin;
+    },
+  },
+  methods: {
+    toBookmark(payload) {
+      this.$store.commit("SET_IS_THISPAGE", payload);
     },
   },
 };
