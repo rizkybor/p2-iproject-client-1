@@ -2,7 +2,7 @@
   <footer id="footer">
     <div class="d-flex justify-content-center mt-4">
       <p style="color: white">
-        <strong>Moviesku by Rizky Ajie Kurniawan</strong>
+        <strong>I-Football</strong>
       </p>
     </div>
   </footer>
