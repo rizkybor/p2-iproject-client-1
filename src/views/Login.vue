@@ -38,7 +38,7 @@
                     <div class="d-grid">
                       <button
                         class="
-                          btn btn-lg btn-danger btn-login
+                          btn btn-lg btn-primary btn-login
                           text-uppercase
                           fw-bold
                           mb-2
@@ -50,6 +50,12 @@
                       <div class="d-grid mb-2">
                         <center>
                           <p>or SignIn with your Google Account :</p>
+                          <GoogleLogin
+                            :params="params"
+                            :renderParams="renderParams"
+                            :onSuccess="onSuccess"
+                            :onFailure="onFailure"
+                          ></GoogleLogin>
                         </center>
                       </div>
                       <div class="text-center">
@@ -83,13 +89,28 @@
 </template>
 
 <script>
+import GoogleLogin from "vue-google-login";
+import Swal from "sweetalert2";
+
 export default {
   name: "Login",
   data() {
     return {
       email: "",
       password: "",
+      params: {
+        client_id:
+          "807016483713-irp30trcufnlda83l10cmale4ov7ut26.apps.googleusercontent.com",
+      },
+      renderParams: {
+        width: 250,
+        height: 50,
+        longtitlte: true,
+      },
     };
+  },
+  components: {
+    GoogleLogin,
   },
   methods: {
     async login() {
@@ -104,6 +125,19 @@ export default {
     },
     toHomeUnregister() {
       this.$router.push("/");
+    },
+    async onSuccess(googleUser) {
+      let token = googleUser.getAuthResponse().id_token;
+      const payload = token;
+      await this.$store.dispatch("googleSignin", payload);
+      this.$router.push("/");
+    },
+    onFailure(error) {
+      Swal.fire({
+        icon: "error",
+        title: "Check your account Google...",
+        text: error,
+      });
     },
   },
 };

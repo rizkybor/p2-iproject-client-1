@@ -60,7 +60,7 @@
                       <button
                         @click="register"
                         class="
-                          btn btn-lg btn-danger btn-register
+                          btn btn-lg btn-primary btn-register
                           text-uppercase
                           fw-bold
                           mb-2
