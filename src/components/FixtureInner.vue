@@ -11,45 +11,63 @@
           style="margin-top: -5%; margin-left: -3%"
         ></a>
         <div class="left_section">
-          <img
-            src="https://www.freepnglogos.com/uploads/manchester-united-logo-png/manchester-united-logo-football-logos-vector-eps-cdr-svg-download-7.png"
-            alt=""
-          />
-          <h2>Manchester United<span> (win) </span></h2>
-          <p>Axel Tuanzebe <span> (12') </span></p>
-          <p>Edinson Cavani <span> (32') </span></p>
-          <p>Edinson Cavani <span> (92') </span></p>
+          <img :src="data.home.logo" alt="" />
+          <h2>{{ data.home.name }}</h2>
+          <p v-if="isLogin">{{ odds[Math.floor(Math.random() * 99)].ename }}</p>
         </div>
 
         <div class="mid_section">
-          <h1>3 - 2</h1>
+          <p>Fulltime</p>
+          <h1>{{ data.scoreFulltime.Home }} - {{ data.scoreFulltime.Away }}</h1>
+          <p>Date: {{ data.date }}, Time: {{ data.time }}</p>
+          <p>Stadium : {{ data.stadium }}</p>
         </div>
         <div class="right_section">
-          <img
-            src="https://www.freepnglogos.com/uploads/barcelona-png/barcelona-new-crest-png-sinastf-deviantart-1.png"
-            alt=""
-          />
-          <h2>FC Barcelona <span> (Lose) </span></h2>
-          <p>Leo Messi <span> (67') </span></p>
-          <p>Leo Messi <span> (49') </span></p>
+          <img :src="data.away.logo" alt="" />
+          <h2>{{ data.away.name }}</h2>
+          <p v-if="isLogin">{{ odds[Math.floor(Math.random() * 99)].ename }}</p>
         </div>
+        <a
+          @click.prevent="toHighlight(data)"
+          v-if="isLogin"
+          href="#"
+          class="bi-caret-right-square-fill"
+          role="img"
+          style="margin-top: -5%; margin-left: -3%"
+        ></a>
       </div>
     </div>
+    <Highlight v-if="isLogin" />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+import Highlight from "../components/Highlight.vue";
+
 export default {
   name: "FixtureInner",
   props: ["data"],
+  components: {
+    Highlight,
+  },
   computed: {
     isLogin: function () {
       return this.$store.state.isLogin;
     },
+    odds: function () {
+      return this.$store.state.oddsname;
+    },
+    ...mapState(["fixture"]),
   },
   methods: {
-    toBookmark(payload) {
+    toBookmark: function (payload) {
       this.$store.commit("SET_IS_THISPAGE", payload);
+    },
+    async toHighlight(payload) {
+      await this.$store.dispatch("setHighlight", payload);
+
+      this.$router.push("/highlight");
     },
   },
 };
@@ -59,6 +77,7 @@ export default {
 a {
   color: #f1b44a;
   font-size: 2rem;
+  z-index: 100;
 }
 
 a:hover {
@@ -134,6 +153,7 @@ a:hover {
 .mid_section {
   flex-grow: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #fff;

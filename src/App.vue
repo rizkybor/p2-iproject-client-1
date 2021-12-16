@@ -4,6 +4,7 @@
   </div>
 </template>
 
+
 <style>
 :root {
   --primary-color: #577bc1;
