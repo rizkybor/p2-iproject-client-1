@@ -13,7 +13,7 @@
         <div class="left_section">
           <img :src="data.home.logo" alt="" />
           <h2>{{ data.home.name }}</h2>
-          <p>{{ odds[Math.floor(Math.random() * 99)].ename }}</p>
+          <p v-if="isLogin">{{ odds[Math.floor(Math.random() * 99)].ename }}</p>
         </div>
 
         <div class="mid_section">
@@ -25,7 +25,7 @@
         <div class="right_section">
           <img :src="data.away.logo" alt="" />
           <h2>{{ data.away.name }}</h2>
-          <p>{{ odds[Math.floor(Math.random() * 99)].ename }}</p>
+          <p v-if="isLogin">{{ odds[Math.floor(Math.random() * 99)].ename }}</p>
         </div>
         <a
           @click.prevent="toHighlight(data)"
@@ -37,7 +37,7 @@
         ></a>
       </div>
     </div>
-    <Highlight />
+    <Highlight v-if="isLogin" />
   </div>
 </template>
 
