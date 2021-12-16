@@ -50,7 +50,6 @@ export default new Vuex.Store({
       })
     },
     register: function(commit, payload){
-      console.log (payload,'register')
       axiosInstances({
         url: "/register",
         method: "post",
