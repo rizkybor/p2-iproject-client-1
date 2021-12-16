@@ -2,15 +2,14 @@
   <div>
     <Navbar v-if="currentPage === 'league' && isLogin === true" />
     <div class="container">
-      <h3>League</h3>
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">League Type</th>
+            <th scope="col">League Football</th>
           </tr>
         </thead>
         <tbody>
-          <LeagueInner />
+          <LeagueInner v-for="data in league" :key="data.id" :data="data" />
         </tbody>
       </table>
     </div>
@@ -30,9 +29,18 @@ export default {
     currentPage: function () {
       return this.$store.state.thisPage;
     },
+    league: function () {
+      return this.$store.state.league;
+    },
     isLogin: function () {
       return this.$store.state.isLogin;
     },
+  },
+  created: function () {
+    if (localStorage.getItem("token")) {
+      this.$store.commit("SET_IS_LOGIN", true);
+    }
+    this.$store.dispatch("fetchLeague");
   },
 };
 </script>

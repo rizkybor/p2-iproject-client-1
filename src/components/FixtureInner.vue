@@ -13,6 +13,7 @@
         <div class="left_section">
           <img :src="data.home.logo" alt="" />
           <h2>{{ data.home.name }}</h2>
+          <p>{{ odds[Math.floor(Math.random() * 99)].ename }}</p>
         </div>
 
         <div class="mid_section">
@@ -24,24 +25,49 @@
         <div class="right_section">
           <img :src="data.away.logo" alt="" />
           <h2>{{ data.away.name }}</h2>
+          <p>{{ odds[Math.floor(Math.random() * 99)].ename }}</p>
         </div>
+        <a
+          @click.prevent="toHighlight(data)"
+          v-if="isLogin"
+          href="#"
+          class="bi-caret-right-square-fill"
+          role="img"
+          style="margin-top: -5%; margin-left: -3%"
+        ></a>
       </div>
     </div>
+    <Highlight />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+import Highlight from "../components/Highlight.vue";
+
 export default {
   name: "FixtureInner",
   props: ["data"],
+  components: {
+    Highlight,
+  },
   computed: {
     isLogin: function () {
       return this.$store.state.isLogin;
     },
+    odds: function () {
+      return this.$store.state.oddsname;
+    },
+    ...mapState(["fixture"]),
   },
   methods: {
-    toBookmark(payload) {
+    toBookmark: function (payload) {
       this.$store.commit("SET_IS_THISPAGE", payload);
+    },
+    async toHighlight(payload) {
+      await this.$store.dispatch("setHighlight", payload);
+
+      this.$router.push("/highlight");
     },
   },
 };
@@ -51,6 +77,7 @@ export default {
 a {
   color: #f1b44a;
   font-size: 2rem;
+  z-index: 100;
 }
 
 a:hover {

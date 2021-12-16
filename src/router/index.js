@@ -6,6 +6,7 @@ import Register from "../views/Register.vue";
 import Standings from "../views/Standings.vue";
 import League from "../views/League.vue";
 import Bookmark from "../views/Bookmark.vue"
+import Highlight from "../components/Highlight.vue"
 
 Vue.use(VueRouter);
 
@@ -39,6 +40,11 @@ const routes = [
     path: "/bookmark",
     name: "Bookmark",
     component: Bookmark,
+  },
+  {
+    path: "/highlight",
+    name: "Highlight",
+    component: Highlight,
   },
   
 ];

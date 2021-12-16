@@ -2,14 +2,15 @@
   <div>
     <Navbar />
     <div class="container">
-      <div class="d-flex justify-content-center mt-5">
-        <input
-          type="date"
-          name="dateFixture"
-          id="dateFixture"
-          v-model="dateFixture"
-        />
-      </div>
+      <center>
+        <div
+          @click.prevent="isDate"
+          class="d-flex justify-content-center mt-5"
+          style="width: 20%; height: auto"
+        >
+          <date-pick v-model="date" :hasInputElement="false"></date-pick>
+        </div>
+      </center>
       <FixtureInner v-for="data in dataSchedule" :key="data" :data="data" />
       <Standings v-if="currentPage === 'standings'" />
       <League v-if="currentPage === 'league'" />
@@ -20,6 +21,8 @@
 </template>
 
 <script>
+import DatePick from "vue-date-pick";
+import "vue-date-pick/dist/vueDatePick.css";
 import Navbar from "../components/Navbar.vue";
 import HFooter from "vue-hacktiv8-footer";
 import FixtureInner from "../components/FixtureInner.vue";
@@ -31,7 +34,7 @@ export default {
   name: "Home",
   data() {
     return {
-      dateFixture: "2021-01-29",
+      date: "2021-01-29",
     };
   },
   components: {
@@ -41,6 +44,7 @@ export default {
     Standings,
     League,
     Bookmark,
+    DatePick,
   },
   computed: {
     currentPage: function () {
@@ -50,12 +54,25 @@ export default {
       return this.$store.state.fixture;
     },
   },
+  methods: {
+    isDate: function () {
+      const payload = this.date;
+      this.$store.dispatch("fetchFixture", payload);
+    },
+  },
   created: function () {
     if (localStorage.getItem("token")) {
       this.$store.commit("SET_IS_LOGIN", true);
     }
-    let data = this.dateFixture;
+    let data = this.date;
     this.$store.dispatch("fetchFixture", data);
+    this.$store.dispatch("fetchOdds");
   },
 };
 </script>
+
+<style scoped>
+.hay {
+  z-index: 100;
+}
+</style>
