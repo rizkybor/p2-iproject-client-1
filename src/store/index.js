@@ -102,7 +102,7 @@ export default new Vuex.Store({
         },
       })
       .then((response)=>{
-        commit("SET_IS_FIXTURE", response.data[0])
+        commit("SET_IS_FIXTURE", response.data)
       })
       .catch((err)=>{
         console.log (err)

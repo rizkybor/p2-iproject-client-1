@@ -10,11 +10,10 @@
           v-model="dateFixture"
         />
       </div>
-      <FixtureInner v-for="data in fixture" :key="data.id" :data="data" />
+      <FixtureInner v-for="data in dataSchedule" :key="data" :data="data" />
       <Standings v-if="currentPage === 'standings'" />
       <League v-if="currentPage === 'league'" />
       <Bookmark v-if="currentPage === 'bookmark'" />
-      {{ fixture }}
     </div>
     <HFooter></HFooter>
   </div>
@@ -47,7 +46,7 @@ export default {
     currentPage: function () {
       return this.$store.state.thisPage;
     },
-    fixture: function () {
+    dataSchedule: function () {
       return this.$store.state.fixture;
     },
   },
